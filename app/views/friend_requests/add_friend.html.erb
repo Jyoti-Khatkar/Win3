@@ -1,5 +1,12 @@
-<h1>Hello</h1>
-<%friend.each do |friend|  %>
-    <li><%= friend %></li>
-<% end %>
 
+
+<ul class="list-group">
+<% @friend.each do |friend| %>
+  
+    <li class="list-group-item" > <%=friend.name%> 
+    <%= link_to "add friend" , friend_requests_path(friend),method: :post>%>
+    
+    </li>
+  
+  <% end %>
+</ul>

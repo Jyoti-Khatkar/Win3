@@ -4,4 +4,13 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   Character.create(name: 'Luke', movie: movies.firs
+
+
+names = ['Chandni', 'Preet', 'Ritu', 'usha']
+User.all.each_with_index do |user, i|
+	next if user.name.present?
+
+	user.name = names[i]
+	user.save
+end

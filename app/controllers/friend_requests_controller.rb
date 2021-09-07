@@ -5,4 +5,8 @@ class FriendRequestsController < ApplicationController
   def add_friend
     @friend = User.all
   end
+  def create
+    puts params
+
+  end
 end
