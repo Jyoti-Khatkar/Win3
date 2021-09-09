@@ -14,10 +14,13 @@
       <% if user_signed_in? %>
 
         <li class="nav-item">
-        <%= link_to "Friends",add_friend_friend_requests_path, class:"nav-link" %>
+        <%= link_to "Other Users",add_friend_friendships_path, class:"nav-link" %>
         </li> 
         <li class="nav-item">
-        <%= link_to "notification",friend_requests_path, class:"nav-link" %>
+        <%= link_to "Request",view_friendships_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+        <%= link_to "Friendlist", friendlist_friendships_path, class:"nav-link" %>
         </li>
         
 

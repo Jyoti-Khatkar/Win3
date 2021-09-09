@@ -11,9 +11,12 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "home#index"
 
-  resources :friend_requests do
+  resources :friendships do
     collection do
       get :add_friend
+      get :view
+      post :accept_decline
+      get  :friendlist
     
     end
   end

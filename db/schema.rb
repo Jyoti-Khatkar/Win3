@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 2021_09_07_171815) do
   end
 
   create_table "friendships", force: :cascade do |t|
-    t.integer "sent_to_id", null: false
     t.integer "sent_by_id", null: false
+    t.integer "sent_to_id", null: false
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["sent_by_id"], name: "index_friendships_on_sent_by_id"
@@ -69,8 +70,8 @@ ActiveRecord::Schema.define(version: 2021_09_07_171815) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "friendships", "sent_bies"
-  add_foreign_key "friendships", "sent_tos"
+  add_foreign_key "friendships", "users", column: "sent_by_id"
+  add_foreign_key "friendships", "users", column: "sent_to_id"
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
