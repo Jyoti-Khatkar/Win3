@@ -1,9 +1,10 @@
 
-
+<div class="container">
 <ul class="list-group">
 <% @users.each do |user| %>
+
   
-    <li class="list-group-item" > <%= user.name %>
+    <li class="list-group-item" > <%= user.email %>
     
     <%= link_to "add friend" , friendships_path(sent_by_id: current_user.id, sent_to_id: user.id),method: :post %>
     
@@ -11,3 +12,4 @@
   
   <% end %>
 </ul>
+</div>

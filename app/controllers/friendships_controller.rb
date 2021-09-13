@@ -3,7 +3,14 @@ class FriendshipsController < ApplicationController
   end
 
   def add_friend
-    @users = User.where.not(id: current_user.id)
+
+    add_user_ids=Friendship.where(:sent_by_id=>current_user.id).pluck(:sent_to_id)
+    requested_user_ids=Friendship.where(:sent_to_id=>current_user.id).pluck(:sent_by_id)
+    all_user_ids=[current_user.id]
+    all_user_ids=(all_user_ids + requested_user_ids + add_user_ids).uniq
+
+    @users = User.where.not(id: all_user_ids)
+
   end
 
 
@@ -14,13 +21,13 @@ class FriendshipsController < ApplicationController
   end
 
   def view
-    @u=Friendship.joins(:sent_by).select('users.*').where(:status=>0)
+    @u=Friendship.joins(:sent_by).select('users.*').where(:sent_to_id=>current_user.id,:status=>0)
 
   end
 
   def accept_decline
     
-        @z=Friendship.find_by(params[:sent_to_id])
+        @z=Friendship.where(:sent_to_id=>current_user.id,:sent_by_id=>params[:sent_by_id]).first
         if @z.update(status: params[:status].to_i)
           flash[:notice]="update successfully"
           redirect_to root_path
@@ -28,7 +35,11 @@ class FriendshipsController < ApplicationController
   end
 
   def friendlist
-    @f=Friendship.joins(:sent_by).select('users.*').where(:status=>1)
+    add_user_ids=Friendship.where(:sent_by_id=>current_user.id,:status=>1).pluck(:sent_to_id)
+    requested_user_ids=Friendship.where(:sent_to_id=>current_user.id,:status=>1).pluck(:sent_by_id)
+    
+    all_user_ids=(requested_user_ids + add_user_ids).uniq
+    @f=User.where(:id=>all_user_ids)
 
 
   end

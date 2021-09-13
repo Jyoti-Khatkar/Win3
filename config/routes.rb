@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get 'likes/create'
   get 'comments/new'
   get 'comments/create'
-  get 'posts/index'
-  get 'posts/show'
-  get 'posts/new'
-  get 'posts/create'
+
   get 'users/index'
   get 'users/show'
   devise_for :users
   root to: "home#index"
+
+  resources :posts do
+    collection do
+      post :addcomment
+    end
+  end
 
   resources :friendships do
     collection do

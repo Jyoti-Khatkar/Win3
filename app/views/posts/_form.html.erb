@@ -1,0 +1,37 @@
+<%= form_with model: @post, local: true do |form| %>
+    <div class="ibox-content m-b-sm border-bottom">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <p>
+              <label for="customer">Title <span class="required">*</span></label>
+              <%= form.text_field :Title, :class => "form-control", required: true %>
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-3 text-right">
+          <div class="form-group">
+            <p>
+              <label for="customer">Content</label><br>
+              <%= form.text_field :Content,:class => "form-control", required: true  %>
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-3 text-right">
+          <div class="form-group">
+            <p>
+              <label for="customer">Content</label><br>
+              <%= form.file_field :image, accept: 'image/png, image/gif, image/jpeg' %></p>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          
+            <%= form.submit%>
+        </div>
+      </div>  
+    </div>
+  <% end %>

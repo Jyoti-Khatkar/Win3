@@ -1,2 +1,33 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="container">
+<ul class="list-group">
+
+
+  
+    <li class="list-group-item" > <%= @post.title %>
+    <li class="list-group-item" > <%= @post.content %>
+    <li class="list-group-item" > <%= image_tag(@post.image, :size => "80x80", :alt => "Picture") %>
+    <%= form_with model: @post,url:addcomment_posts_path ,method: :post,local: true do |form| %>
+     <div class="col-sm-3 text-right">
+          <div class="form-group">
+            <p>
+            <br>
+            <%= form.hidden_field :Post_id, value: @post.id %>
+           
+              <%= form.text_field :reaction,:class => "form-control", :placeholder=>"comment" ,required: true  %>
+              
+            </p>
+          </div>
+      </div>
+    <%end%>
+
+    <% @comments.each do |c|%>
+        <li class="list-group-item" > <%= c.reaction %></li>
+       
+
+    <%end%>
+
+
+
+
+</ul>
+</div>

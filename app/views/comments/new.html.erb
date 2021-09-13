@@ -1,2 +1,12 @@
-<h1>Comments#new</h1>
-<p>Find me in app/views/comments/new.html.erb</p>
+<ul class="list-group">
+<% @comments.each do |c| %>
+  
+    
+    <li class="list-group-item" > <%= c.content %>
+    
+    
+    </li>
+    
+    
+      
+</ul>

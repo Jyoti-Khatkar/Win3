@@ -14,3 +14,4 @@ User.all.each_with_index do |user, i|
 	user.name = names[i]
 	user.save
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

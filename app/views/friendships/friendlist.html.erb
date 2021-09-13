@@ -1,10 +1,13 @@
+<div class="container">
 <ul class="list-group">
 <% @f.each do |username| %>
   
     <li class="list-group-item" > <%= username.email %>
     
-    </li>
+ 
+    <%= link_to "Friends" ,method: :post %>
     
-  
+    </li>
   <% end %>
 </ul>
+</div>

@@ -1,0 +1,2 @@
+class Pagereference < ApplicationRecord
+end
