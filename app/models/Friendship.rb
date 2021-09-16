@@ -4,5 +4,5 @@ class Friendship < ApplicationRecord
   scope :friends, -> { where('status =?', 1 )}
   scope :not_friends, -> { where('status =?', 2) }
   scope :pending, -> { where('status =?', 0) }
-
+  
 end

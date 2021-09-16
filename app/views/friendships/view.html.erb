@@ -3,7 +3,7 @@
 <ul class="list-group">
 <% @u.each do |username| %>
   
-    <li class="list-group-item" > <%= username.email %>
+    <li class="list-group-item" > <%= username.name %>
     
     <%= link_to "accept" ,accept_decline_friendships_path( sent_by_id: username.id, status: 1),method: :post %>
     <%= link_to "decline" , accept_decline_friendships_path(sent_by_id: username.id, status: 2),method: :post %>

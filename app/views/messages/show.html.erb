@@ -1,0 +1,20 @@
+<%= form_with model: @reciever,url:addmessage_messages_path,method: :post,local: true do |form| %>
+     <div class="col-sm-3 text-right">
+          <div class="form-group">
+            <p>
+            <br>
+            <%= form.hidden_field :user_id, value: @reciever.id %>
+           
+              <%= form.text_field :sms,:class => "form-control", :placeholder=>"messages" ,required: true  %>
+              
+            </p>
+          </div>
+      </div>
+    <%end%>
+
+    <% @messages.each do |message|%>
+
+        <li class="list-group-item" > <strong><%= message.name %>:</strong>&nbspnbsp<%= message.sms %></li>
+       
+
+    <%end%>

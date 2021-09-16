@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  get 'likes/create'
+  # post 'likes/create'
   get 'comments/new'
   get 'comments/create'
 
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :posts do
     collection do
       post :addcomment
+      post :like
     end
   end
 
@@ -22,11 +23,17 @@ Rails.application.routes.draw do
       get :view
       post :accept_decline
       get  :friendlist
+      delete :unfriend
+      
     
     end
   end
+  resources :messages do
+    collection do
+      post :addmessage
 
-  
+    end    
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

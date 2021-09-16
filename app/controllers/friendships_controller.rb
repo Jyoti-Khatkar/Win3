@@ -43,6 +43,16 @@ class FriendshipsController < ApplicationController
 
 
   end
+  def unfriend
+    @d=Friendship.where(:sent_by_id=>params[:sent_by_id], :sent_to_id=>params[:sent_to_id]).first
+    @d.destroy
+    flash[:notice]="unfriend successfully"
+    redirect_to friendlist_friendships_path
+  end
+
+
+
+
 
   
 

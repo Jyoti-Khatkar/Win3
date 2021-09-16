@@ -4,6 +4,7 @@ class CreateLikes < ActiveRecord::Migration[6.1]
       t.references :user, null: false, foreign_key: true
       t.references :post, null: false, foreign_key: true
       t.references :comment, null: true, foreign_key: true
+      t.boolean :is_like, default: true
 
       t.timestamps
     end

@@ -1,0 +1,13 @@
+<div class="container">
+<ul class="list-group">
+<% @recievers.each do |p| %>
+
+  
+    <li class="nav-item">
+        <%= link_to "#{p.name}", message_path(p.id), class:"nav-link" %>
+     
+        </li>
+    
+
+<%end%>
+</div>

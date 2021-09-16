@@ -2,10 +2,10 @@
 <ul class="list-group">
 <% @f.each do |username| %>
   
-    <li class="list-group-item" > <%= username.email %>
+    <li class="list-group-item" > <%= username.name %>
     
  
-    <%= link_to "Friends" ,method: :post %>
+    <%= link_to "unfriend",unfriend_friendships_path(sent_to_id: username.id,sent_by_id: current_user.id) ,method: :delete %>
     
     </li>
   <% end %>
